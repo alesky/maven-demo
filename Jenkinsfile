@@ -5,7 +5,10 @@ pipeline {
       parallel {
         stage('scan') {
           steps {
-            withSonarQubeEnv 'sonar'
+            withSonarQubeEnv('sonar') {
+              sh 'mvn clean package sonar:sonar'
+            }
+
           }
         }
 
