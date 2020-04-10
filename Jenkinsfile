@@ -5,13 +5,13 @@ pipeline {
       parallel {
         stage('scan') {
           steps {
-            withSonarQubeEnv 'scanner'
+            withSonarQubeEnv 'sonar'
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
-            echo '${env.BUILD_NUMBER}'
+            sh 'echo \'${env.BUILD_NUMBER}\''
           }
         }
 
