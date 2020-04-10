@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('scan') {
-      steps {
-        withSonarQubeEnv 'scanner'
+      parallel {
+        stage('scan') {
+          steps {
+            withSonarQubeEnv 'scanner'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo '${env.BUILD_NUMBER}'
+          }
+        }
+
       }
     }
 
