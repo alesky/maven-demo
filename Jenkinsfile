@@ -14,7 +14,7 @@ pipeline {
 
         stage('error') {
           steps {
-            sh 'echo $env.BUILD_NUMBER'
+            echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
           }
         }
 
