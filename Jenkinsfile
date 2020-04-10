@@ -6,7 +6,7 @@ pipeline {
         stage('scan') {
           steps {
             withSonarQubeEnv('sonar') {
-              sh 'mvn clean package sonar:sonar'
+              sh 'mvn -X clean package sonar:sonar'
             }
 
           }
@@ -14,7 +14,7 @@ pipeline {
 
         stage('error') {
           steps {
-            sh 'echo \'${env.BUILD_NUMBER}\''
+            sh 'echo $env.BUILD_NUMBER'
           }
         }
 
@@ -23,7 +23,7 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'mvn build'
+        sh 'mvn package -X'
       }
     }
 
